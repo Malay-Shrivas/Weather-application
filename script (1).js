@@ -1,4 +1,20 @@
+
 const apiKey = "8faf93f54477e3a07923b2a54beb8437";  
+
+const cityName = document.getElementById("cityName");
+const temp = document.getElementById("temp");
+const temp2 = document.getElementById("temp2");
+const feels_like = document.getElementById("feels_like");
+const humidity = document.getElementById("humidity");
+const humidity2 = document.getElementById("humidity2");
+const min_temp = document.getElementById("min_temp");
+const max_temp = document.getElementById("max_temp");
+const wind_speed = document.getElementById("wind_speed");
+const wind_speed2 = document.getElementById("wind_speed2");
+const wind_degrees = document.getElementById("wind_degrees");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
+
 
 const getWeather = (city) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -11,9 +27,9 @@ const getWeather = (city) => {
             return response.json();
         })
         .then((data) => {
-            console.log(data);
+            console.log("API Response:", data);
 
-            
+           
             cityName.innerHTML = data.name;
             temp.innerHTML = data.main.temp;
             temp2.innerHTML = data.main.temp;
@@ -34,11 +50,16 @@ const getWeather = (city) => {
         });
 };
 
+
 const city = document.getElementById("city");
 const submit = document.getElementById("submit");
 
 submit.addEventListener("click", (e) => {
     e.preventDefault();
+    if (!city.value) {
+        alert("Please enter a city name");
+        return;
+    }
     getWeather(city.value);
 });
 
