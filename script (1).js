@@ -1,4 +1,4 @@
-const apiKey = "05b84ac90e66b8e257026ae01da6f286";  
+const apiKey = "8faf93f54477e3a07923b2a54beb8437";  
 
 const getWeather = (city) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
